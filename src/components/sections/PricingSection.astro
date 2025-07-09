@@ -1,0 +1,340 @@
+---
+// PricingSection.astro - Planes y precios estilo Spinning Center Gym
+
+const plans = [
+  {
+    id: 'micro',
+    name: 'Micro Gimnasio',
+    subtitle: 'Hasta 100 miembros',
+    price: '50,000',
+    originalPrice: null,
+    popular: false,
+    description: 'Perfecto para estudios pequeños y gimnasios familiares',
+    setupFee: '400,000',
+    commission: 'Sin comisión primeros 3 meses',
+    pricePerUser: '2,500 por usuario activo',
+    features: [
+      'Hasta 100 miembros activos',
+      'QR de acceso y clases',
+      'Rutinas básicas personalizadas',
+      'Pagos Nequi y Daviplata',
+      'Tips nutricionales IA',
+      'Reservas de clases',
+      'Panel de administración',
+      'Soporte WhatsApp',
+      'Reportes básicos',
+      'App personalizada con tu marca'
+    ],
+    limitations: [
+      'Máximo 2 profesores',
+      'Reportes básicos',
+      'Sin API personalizada'
+    ],
+    cta: 'Unirse a Lista de Espera',
+    ctaLink: '#lista-espera',
+    whatsappText: 'Hola mass-up, me interesa el plan Micro Gimnasio de $50,000/mes para mi gimnasio pequeño'
+  },
+  {
+    id: 'pequeno',
+    name: 'Gimnasio Pequeño',
+    subtitle: '100-300 miembros',
+    price: '180,000',
+    originalPrice: '280,000',
+    popular: true,
+    description: 'La opción más popular para gimnasios en crecimiento',
+    setupFee: '600,000',
+    commission: '1.5% comisión en transacciones',
+    pricePerUser: '1,800 por usuario activo',
+    features: [
+      'Hasta 300 miembros activos',
+      'Todas las funciones del plan Micro',
+      'Rutinas avanzadas con videos',
+      'Tips nutricionales IA personalizados',
+      'Múltiples profesores (hasta 8)',
+      'Clases grupales ilimitadas',
+      'Reportes avanzados y analytics',
+      'Recordatorios automáticos de pago',
+      'Integración PSE y tarjetas',
+      'Soporte prioritario'
+    ],
+    limitations: [
+      'API básica',
+      'Sin personalización avanzada'
+    ],
+    cta: 'Unirse a Lista de Espera',
+    ctaLink: '#lista-espera',
+    whatsappText: 'Hola mass-up, me interesa el plan Gimnasio Pequeño de $180,000/mes, quiero unirme a la lista de espera'
+  },
+  {
+    id: 'mediano',
+    name: 'Gimnasio Mediano',
+    subtitle: '300+ miembros',
+    price: '450,000',
+    originalPrice: '600,000',
+    popular: false,
+    description: 'Para gimnasios establecidos que buscan máximo control',
+    setupFee: '800,000',
+    commission: '1.8% comisión + features premium',
+    pricePerUser: '1,500 por usuario activo',
+    features: [
+      'Miembros ilimitados',
+      'Todas las funciones premium',
+      'API personalizada completa',
+      'Múltiples sucursales',
+      'Profesores ilimitados',
+      'Analytics avanzados con BI',
+      'Integraciones personalizadas',
+      'Onboarding dedicado',
+      'Account manager asignado',
+      'SLA de soporte garantizado'
+    ],
+    limitations: [],
+    cta: 'Contactar Ventas',
+    ctaLink: '#contacto',
+    whatsappText: 'Hola mass-up, necesito cotizar el plan Gimnasio Mediano para mi gimnasio de 300+ miembros'
+  }
+];
+---
+
+<section id="precios" class="py-20 bg-black">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <div class="inline-block bg-amber-400 text-black px-4 py-2 rounded-full font-bold text-sm mb-6">
+        PRECIOS DE LANZAMIENTO
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-100">
+        Planes que se Adaptan a 
+        <span class="text-amber-400 block mt-2">
+          tu Gimnasio
+        </span>
+      </h2>
+      <p class="text-xl text-gray-100 max-w-3xl mx-auto mb-8 leading-relaxed">
+        Oferta especial de lanzamiento. Únete a la lista de espera y obtén estos precios exclusivos por tiempo limitado.
+      </p>
+      
+      <!-- Launch offer badge -->
+      <div class="bg-gradient-to-r from-amber-400 to-amber-500 text-black rounded-xl p-6 shadow-lg max-w-2xl mx-auto mb-8">
+        <div class="flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span class="font-bold text-lg">🚀 OFERTA DE LANZAMIENTO</span>
+        </div>
+        <p class="text-amber-900 font-medium">
+          Primeros 100 gimnasios: <strong>50% descuento</strong> los primeros 6 meses
+        </p>
+      </div>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-16">
+      {plans.map((plan) => (
+        <div class={`relative bg-white rounded-2xl shadow-lg border transition-all duration-300 hover:shadow-xl hover:scale-105 ${plan.popular ? 'border-amber-400 ring-2 ring-amber-100' : 'border-gray-100 hover:border-amber-400'}`}>
+          
+          {plan.popular && (
+            <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+              <div class="bg-amber-400 text-black px-6 py-2 rounded-full font-bold text-sm">
+                MÁS POPULAR
+              </div>
+            </div>
+          )}
+
+          <div class={`p-8 ${plan.popular ? 'pt-12' : ''}`}>
+            <!-- Plan header -->
+            <div class="text-center mb-8">
+              <h3 class="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+              <p class="text-gray-600 mb-4 text-lg">{plan.subtitle}</p>
+              
+              <!-- Price -->
+              <div class="mb-4">
+                {plan.originalPrice && (
+                  <div class="text-lg text-gray-400 line-through mb-1">${plan.originalPrice}</div>
+                )}
+                <div class="flex items-center justify-center">
+                  <span class="text-4xl font-bold text-gray-900">${plan.price}</span>
+                  <span class="text-gray-600 ml-2">COP/mes</span>
+                </div>
+                {plan.originalPrice && (
+                  <div class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium mt-2">
+                    Precio Lanzamiento
+                  </div>
+                )}
+              </div>
+              
+              <!-- Pricing model -->
+              <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-4">
+                <p class="text-amber-800 font-medium text-sm">{plan.pricePerUser}</p>
+                <p class="text-amber-600 text-xs">Mínimo: ${plan.price} COP</p>
+              </div>
+              
+              <!-- Setup fee and commission -->
+              <div class="text-sm text-gray-600 space-y-1 bg-gray-50 rounded-lg p-3">
+                <p><strong>Setup inicial:</strong> ${plan.setupFee} COP (una vez)</p>
+                <p class="text-amber-600 font-medium">{plan.commission}</p>
+              </div>
+              
+              <p class="text-gray-600 mt-4 leading-relaxed">{plan.description}</p>
+            </div>
+
+            <!-- Features -->
+            <div class="mb-8">
+              <h4 class="font-bold text-gray-900 mb-4 text-lg">Incluye:</h4>
+              <ul class="space-y-3">
+                {plan.features.map((feature) => (
+                  <li class="flex items-start">
+                    <div class="w-2 h-2 bg-amber-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                    <span class="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              
+              {plan.limitations.length > 0 && (
+                <div class="mt-6">
+                  <h5 class="font-medium text-gray-500 mb-2 text-sm">Limitaciones:</h5>
+                  <ul class="space-y-1">
+                    {plan.limitations.map((limitation) => (
+                      <li class="flex items-start">
+                        <svg class="w-4 h-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                        <span class="text-gray-500 text-xs">{limitation}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            <!-- CTA Button -->
+            <div class="space-y-3">
+              <a 
+                href={plan.ctaLink}
+                class={`block w-full py-4 px-6 rounded-xl font-bold text-center transition-all ${
+                  plan.popular 
+                    ? 'bg-amber-400 hover:bg-amber-500 text-black shadow-lg' 
+                    : 'bg-gray-900 hover:bg-gray-800 text-white'
+                }`}
+              >
+                {plan.cta}
+              </a>
+              
+              <a 
+                href={`https://wa.me/+573181123660?text=${encodeURIComponent(plan.whatsappText)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block w-full py-3 px-6 border-2 border-amber-400 text-amber-600 hover:bg-amber-50 rounded-xl font-medium text-center transition-all"
+              >
+                <svg class="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                Preguntar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Comparativa de Planes -->
+    <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 mb-16">
+      <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Comparativa de Planes</h3>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-gray-100">
+              <th class="text-left py-4 px-4 font-bold text-gray-900">Características</th>
+              <th class="text-center py-4 px-4 font-bold text-gray-900">Micro</th>
+              <th class="text-center py-4 px-4 font-bold text-amber-600 bg-amber-50">Pequeño ⭐</th>
+              <th class="text-center py-4 px-4 font-bold text-gray-900">Mediano</th>
+            </tr>
+          </thead>
+          <tbody class="text-sm">
+            <tr class="border-b border-gray-100">
+              <td class="py-3 px-4 font-medium text-gray-700">Miembros incluidos</td>
+              <td class="py-3 px-4 text-center">100</td>
+              <td class="py-3 px-4 text-center bg-amber-50">300</td>
+              <td class="py-3 px-4 text-center">Ilimitados</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 px-4 font-medium text-gray-700">Profesores</td>
+              <td class="py-3 px-4 text-center">2</td>
+              <td class="py-3 px-4 text-center bg-amber-50">8</td>
+              <td class="py-3 px-4 text-center">Ilimitados</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 px-4 font-medium text-gray-700">API personalizada</td>
+              <td class="py-3 px-4 text-center">❌</td>
+              <td class="py-3 px-4 text-center bg-amber-50">Básica</td>
+              <td class="py-3 px-4 text-center">✅ Completa</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 px-4 font-medium text-gray-700">Múltiples sucursales</td>
+              <td class="py-3 px-4 text-center">❌</td>
+              <td class="py-3 px-4 text-center bg-amber-50">❌</td>
+              <td class="py-3 px-4 text-center">✅</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 font-medium text-gray-700">Account Manager</td>
+              <td class="py-3 px-4 text-center">❌</td>
+              <td class="py-3 px-4 text-center bg-amber-50">❌</td>
+              <td class="py-3 px-4 text-center">✅</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- FAQ Rápido sobre Precios -->
+    <div class="bg-gradient-to-r from-amber-50 to-amber-100 rounded-2xl p-8">
+      <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">Preguntas Frecuentes sobre Precios</h3>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h4 class="font-bold text-gray-900 mb-2">¿Hay contratos largos?</h4>
+          <p class="text-gray-700 text-sm leading-relaxed mb-4">No, somos mes a mes. Puedes cancelar cuando quieras sin penalidades.</p>
+          
+          <h4 class="font-bold text-gray-900 mb-2">¿Qué incluye el setup inicial?</h4>
+          <p class="text-gray-700 text-sm leading-relaxed mb-4">Configuración completa, migración de datos, capacitación del equipo y personalización con tu marca.</p>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-gray-900 mb-2">¿Puedo cambiar de plan después?</h4>
+          <p class="text-gray-700 text-sm leading-relaxed mb-4">Sí, puedes actualizar o cambiar tu plan en cualquier momento sin costos adicionales.</p>
+          
+          <h4 class="font-bold text-gray-900 mb-2">¿Hay descuentos por pago anual?</h4>
+          <p class="text-gray-700 text-sm leading-relaxed mb-4">Durante el lanzamiento ofrecemos 50% descuento los primeros 6 meses.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Professional styling */
+  .container {
+    max-width: 1200px;
+  }
+  
+  /* Smooth transitions */
+  * {
+    transition: all 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .hover\:scale-105:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Table responsive */
+  @media (max-width: 768px) {
+    .overflow-x-auto {
+      overflow-x: scroll;
+    }
+    
+    table {
+      min-width: 600px;
+    }
+  }
+</style>

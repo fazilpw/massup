@@ -1,16 +1,150 @@
 ---
-
+// index.astro - Landing page principal para mass-up
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import AppFeaturesSection from '../components/sections/AppFeaturesSection.astro';
+import RolesSection from '../components/sections/RolesSection.astro';
+import BenefitsSection from '../components/sections/BenefitsSection.astro';
+import PricingSection from '../components/sections/PricingSection.astro';
+import DemoSection from '../components/sections/DemoSection.astro';
+import FAQSection from '../components/sections/FAQSection.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout 
+  title="mass-up - App Completa para Gimnasios Pequeños | Lista de Espera Abierta"
+  description="Únete a la lista de espera de mass-up. La app que transforma gimnasios pequeños en Colombia con QR de acceso, rutinas personalizadas y pagos automáticos por Nequi. Precios de lanzamiento desde $50,000/mes."
+  ogImage="/images/mass-up-og.jpg"
+  isHomepage={true}
+>
+  <Header />
+  <main>
+    <!-- Hero Principal -->
+    <HeroSection />
+    
+    <!-- Funcionalidades de la App -->
+    <AppFeaturesSection />
+    
+    <!-- Experiencias por Rol -->
+    <RolesSection />
+    
+    <!-- Beneficios y Resultados -->
+    <BenefitsSection />
+    
+
+    
+    <!-- Planes y Precios de Lanzamiento -->
+    <PricingSection />
+    
+    <!-- Testimonios de Gimnasios -->
+    
+    <!-- Lista de Espera -->
+    <DemoSection />
+    
+    <!-- Preguntas Frecuentes -->
+    <FAQSection />
+  </main>
+  <Footer />
+</Layout>
+
+<!-- Schema.org para SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "mass-up",
+  "description": "App completa para gestión de gimnasios pequeños con QR de acceso, rutinas personalizadas y pagos automáticos",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "iOS, Android, Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "50000",
+    "priceCurrency": "COP",
+    "priceSpecification": {
+      "@type": "RecurringPaymentFrequency",
+      "frequency": "monthly"
+    }
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "mass-up",
+    "url": "https://mass-up.co",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+57-318-112-3660",
+      "contactType": "customer service",
+      "availableLanguage": "Spanish"
+    }
+  },
+  "featureList": [
+    "QR de acceso para miembros",
+    "Rutinas personalizadas",
+    "Tips nutricionales con IA",
+    "Pagos automáticos por Nequi",
+    "Gestión de clases",
+    "Reportes en tiempo real",
+    "App para administradores, profesores y clientes"
+  ],
+  "screenshot": "/images/app-screenshots.jpg",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "24"
+  }
+}
+</script>
+
+<!-- Structured Data para Local Business -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "mass-up",
+  "description": "Soluciones tecnológicas para gimnasios pequeños en Colombia",
+  "url": "https://mass-up.co",
+  "telephone": "+57-318-112-3660",
+  "email": "hola@mass-up.co",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Bogotá",
+    "addressCountry": "CO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "4.7110",
+    "longitude": "-74.0721"
+  },
+  "sameAs": [
+    "https://wa.me/573181123660"
+  ],
+  "priceRange": "$50,000 - $450,000 COP/mes",
+  "paymentAccepted": "Nequi, Daviplata, PSE, Tarjetas de Crédito",
+  "currenciesAccepted": "COP"
+}
+</script>
+
+<!-- Launch Waitlist Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "name": "mass-up Launch - Lista de Espera",
+  "description": "Únete a la lista de espera para obtener acceso temprano y precios especiales de lanzamiento",
+  "startDate": "2025-01-15",
+  "endDate": "2025-03-01",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+  "organizer": {
+    "@type": "Organization",
+    "name": "mass-up",
+    "url": "https://mass-up.co"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "COP",
+    "description": "Unirse a la lista de espera es gratuito y garantiza precios de lanzamiento especiales"
+  }
+}
+</script>

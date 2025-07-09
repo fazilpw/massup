@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/* ========================================
+   CAMBIOS DE COLORES - ESQUEMA GYM MASCULINO
+   ======================================== */
+
+/* 1. VARIABLES CSS ACTUALIZADAS - global.css */
+
+
+/* ========================================
+   TIPOGRAFÍA KANIT PERSONALIZADA
+   ======================================== */
+
+/* Kanit SemiBold 600 Italic para títulos principales */
+.title-main,
+.font-kanit-semibold-italic {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Kanit SemiBold 600 Normal para subtítulos */
+.font-kanit-semibold {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Kanit regular */
+.font-kanit {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Aplicar Kanit automáticamente a elementos HTML */
+h1 {
+  font-family: 'Kanit', sans-serif !important;
+  font-weight: 600 !important;
+  font-style: italic !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+}
+
+h2 {
+  font-family: 'Kanit', sans-serif !important;
+  font-weight: 600 !important;
+  font-style: normal !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Inter para el resto del contenido */
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+h3, h4, h5, h6 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+}
+
+/* ========================================
+   COLORES Y VARIABLES ACTUALIZADAS
+   ======================================== */
+
+
+/* Fondo principal */
+body {
+  background-color: #000000;
+}
+
+/* ========================================
+   NAVEGACIÓN
+   ======================================== */
+
+
+
+/* ========================================
+   UTILIDADES KANIT PARA TAILWIND
+   ======================================== */
+
+/* Estas clases se pueden usar directamente en HTML */
+.kanit-title {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.kanit-subtitle {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.kanit-bold {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ========================================
+   RESPONSIVE TYPOGRAPHY
+   ======================================== */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  h2 {
+    font-size: 2rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  .kanit-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  .kanit-title {
+    font-size: 2rem;
+    line-height: 1.3;
+  }
+}

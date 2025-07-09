@@ -1,0 +1,447 @@
+---
+// AppFeaturesSection.astro - Estilo Spinning Center Gym
+
+const appFeatures = [
+  {
+    id: 'progress-tracking',
+    title: 'Control de Progreso',
+    description: 'Miembros registran peso, medidas y fotos. Profesores ven el progreso para optimizar rutinas.',
+    icon: 'chart-progress',
+    roles: ['admin', 'profesor', 'cliente'],
+    details: [
+      'Registro de peso y medidas corporales',
+      'Fotos de progreso con antes/después',
+      'Gráficos de evolución en tiempo real',
+      'Análisis de progreso por profesor'
+    ]
+  },
+  {
+    id: 'routines',
+    title: 'Rutinas Inteligentes',
+    description: 'Rutinas que se adaptan automáticamente según el progreso y objetivos del miembro.',
+    icon: 'dumbbell',
+    roles: ['admin', 'profesor', 'cliente'],
+    details: [
+      'Biblioteca de ejercicios con videos HD',
+      'Rutinas que evolucionan con el progreso',
+      'Recomendaciones basadas en datos',
+      'Sincronización profesor-alumno'
+    ]
+  },
+  {
+    id: 'class-system',
+    title: 'Sistema de Reservas',
+    description: 'Reservas con cupos limitados, calendario inteligente y gestión automática de horarios.',
+    icon: 'calendar-check',
+    roles: ['admin', 'profesor', 'cliente'],
+    details: [
+      'Reservas en tiempo real con cupos',
+      'Calendario visual para profesores',
+      'Notificaciones automáticas',
+      'Lista de espera inteligente'
+    ]
+  },
+  {
+    id: 'nutrition',
+    title: 'Nutrición Personalizada',
+    description: 'Recomendaciones que se ajustan según el progreso, objetivos y rutina de entrenamiento.',
+    icon: 'apple',
+    roles: ['cliente'],
+    details: [
+      'Tips basados en progreso real',
+      'Planes alimenticios adaptativos',
+      'Control de macronutrientes',
+      'Recetas según objetivos'
+    ]
+  },
+  {
+    id: 'wellness-notifications',
+    title: 'Notificaciones de Bienestar',
+    description: 'Sistema inteligente que cuida tu progreso, motivación y bienestar personal desde tu celular.',
+    icon: 'bell-care',
+    roles: ['cliente'],
+    details: [
+      'Celebración de logros personales automática',
+      'Tips nutricionales post-entreno en tiempo real',
+      'Recordatorios inteligentes de hidratación',
+      'Motivación personalizada según tu progreso'
+    ]
+  },
+  {
+    id: 'payments',
+    title: 'Pagos Automáticos',
+    description: 'Cobro por Nequi, Daviplata y PSE. Recordatorios inteligentes y control de morosidad.',
+    icon: 'credit-card',
+    roles: ['admin', 'cliente'],
+    details: [
+      'Débito automático por Nequi',
+      'Recordatorios WhatsApp inteligentes',
+      'Control de morosidad predictivo',
+      'Reportes financieros automáticos'
+    ]
+  }
+];
+
+const roleColors: Record<string, string> = {
+  admin: 'bg-amber-100 text-amber-800',
+  profesor: 'bg-gray-100 text-gray-800',
+  cliente: 'bg-slate-100 text-slate-800'
+};
+
+const roleNames: Record<string, string> = {
+  admin: 'Admin',
+  profesor: 'Profesor',
+  cliente: 'Miembro'
+};
+---
+
+<section class="py-20 bg-black">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <div class="inline-block bg-amber-400 text-black px-4 py-2 rounded-full font-bold text-sm mb-6">
+        FUNCIONALIDADES COMPLETAS
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-100">
+        Transformación Completa de tu Gimnasio 
+        <span class="text-amber-400 block mt-2">
+          con Tecnología Profesional
+        </span>
+      </h2>
+      <p class="text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
+        Más que una app de gestión: un ecosistema completo que conecta progreso, rutinas, 
+        clases y pagos para maximizar resultados y retención.
+      </p>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-8 mb-16">
+      {appFeatures.map((feature) => (
+        <div class="group bg-gray-100 border border-gray-100 rounded-2xl p-8 hover:shadow-lg hover:border-amber-400 transition-all duration-300">
+          <!-- Icon -->
+          <div class="w-16 h-16 bg-amber-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            {feature.icon === 'chart-progress' && (
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4"></path>
+              </svg>
+            )}
+            {feature.icon === 'dumbbell' && (
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4"></path>
+              </svg>
+            )}
+            {feature.icon === 'calendar-check' && (
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+              </svg>
+            )}
+            {feature.icon === 'apple' && (
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            )}
+            {feature.icon === 'bell-care' && (
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-5 5v-5zM10.586 17L7 20.414 5.586 19l6.414-6.414L10.586 17zM17.5 10C17.5 6.41015 14.5899 3.5 11 3.5S4.5 6.41015 4.5 10C4.5 11.7142 5.11929 13.2856 6.15176 14.4788L7.56597 13.0646C6.97862 12.2671 6.5 11.1749 6.5 10C6.5 7.51472 8.51472 5.5 11 5.5S15.5 7.51472 15.5 10C15.5 11.1749 15.0214 12.2671 14.4341 13.0646L15.8482 14.4788C16.8807 13.2856 17.5 11.7142 17.5 10Z"></path>
+              </svg>
+            )}
+            {feature.icon === 'credit-card' && (
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+              </svg>
+            )}
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-xl font-bold mb-3 text-gray-800">{feature.title}</h3>
+          <p class="text-gray-800 mb-4 leading-relaxed">{feature.description}</p>
+
+          <!-- Role badges -->
+          <div class="flex flex-wrap gap-2  mb-4">
+            {feature.roles.map((role) => (
+              <span class={`px-3 py-1 text-xs font-medium  rounded-full ${roleColors[role]}`}>
+                {roleNames[role]}
+              </span>
+            ))}
+          </div>
+
+          <!-- Details list -->
+          <div class="space-y-2">
+            {feature.details.map((detail) => (
+              <div class="flex items-start text-sm text-gray-800">
+                <div class="w-2 h-2 bg-amber-400 rounded-full mt-2 mr-2 flex-shrink-0"></div>
+                <span class="leading-relaxed text-gray-800">{detail}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Progress Tracking Showcase -->
+    <div class="bg-black rounded-2xl p-8 mb-16 border border-amber-200">
+      <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold text-amber-400 mb-4">Control de Progreso en Acción</h3>
+        <p class="text-lg text-gray-100">Ve cómo miembros y profesores trabajan juntos para lograr objetivos</p>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Miembro registra progreso -->
+        <div class="bg-gray-100 rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Miembro Registra</h4>
+          <p class="text-sm text-gray-600 mb-3 leading-relaxed">Peso: 75kg → 72kg<br/>Fotos de progreso<br/>Medidas corporales</p>
+          <div class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded font-medium">-3kg en 30 días ✨</div>
+        </div>
+
+        <!-- IA analiza -->
+        <div class="bg-gray-100 rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-gray-500 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">IA Analiza</h4>
+          <p class="text-sm text-gray-600 mb-3 leading-relaxed">Progreso óptimo<br/>Recomienda ajustes<br/>Predice resultados</p>
+          <div class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded font-medium">Rutina actualizada 🤖</div>
+        </div>
+
+        <!-- Profesor optimiza -->
+        <div class="bg-gray-100 rounded-xl p-6 shadow-sm border border-gray-100">
+          <div class="w-12 h-12 bg-slate-500 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+          </div>
+          <h4 class="font-bold text-gray-900 mb-2">Profesor Optimiza</h4>
+          <p class="text-sm text-gray-600 mb-3 leading-relaxed">Ve progreso real<br/>Ajusta intensidad<br/>Celebra logros</p>
+          <div class="bg-slate-100 text-slate-800 text-xs px-2 py-1 rounded font-medium">+2 ejercicios 💪</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Role-based view toggle -->
+    <div class="rounded-2xl border-amber-200 border p-8">
+      <h3 class="text-3xl font-bold text-center mb-8 text-amber-400">
+        Explora por Rol
+      </h3>
+      
+      <div class="flex justify-center mb-8">
+        <div class="bg-gray-100 rounded-xl p-2 shadow-sm border border-gray-100">
+          <button class="role-tab active px-6 py-3 rounded-lg font-medium transition-all" data-role="all">
+            Todas las Funciones
+          </button>
+          <button class="role-tab px-6 py-3 rounded-lg font-medium transition-all" data-role="admin">
+            Para Administradores
+          </button>
+          <button class="role-tab px-6 py-3 rounded-lg font-medium transition-all" data-role="profesor">
+            Para Profesores
+          </button>
+          <button class="role-tab px-6 py-3 rounded-lg font-medium transition-all" data-role="cliente">
+            Para Miembros
+          </button>
+        </div>
+      </div>
+
+      <!-- Feature showcase by role -->
+      <div class="role-content-all active">
+        <div class="text-center">
+          <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+            mass-up conecta progreso real con rutinas inteligentes y gestión completa
+          </p>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="text-center bg-gray-100 rounded-xl p-6 border border-gray-100">
+              <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-gray-900 mb-2">Administradores</h4>
+              <p class="text-sm text-gray-600">Control total + analytics de progreso</p>
+            </div>
+            <div class="text-center bg-gray-100 rounded-xl p-6 border border-gray-100">
+              <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-gray-900 mb-2">Profesores</h4>
+              <p class="text-sm text-gray-600">Progreso de alumnos + rutinas inteligentes</p>
+            </div>
+            <div class="text-center bg-gray-100 rounded-xl p-6 border border-gray-100">
+              <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg class="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                </svg>
+              </div>
+              <h4 class="font-bold text-gray-900 mb-2">Miembros</h4>
+              <p class="text-sm text-gray-600">Seguimiento + reservas + nutrición</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Role-specific content (simplified for space) -->
+      <div class="role-content-admin">
+        <div class="bg-gray-100 rounded-xl p-6 border border-gray-100">
+          <h4 class="text-xl font-bold mb-4 text-gray-900">Dashboard de Control Completo</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <ul class="space-y-3">
+                <li class="flex items-center">
+                  <div class="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  Ve progreso de todos los miembros
+                </li>
+                <li class="flex items-center">
+                  <div class="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  Analytics de retención por progreso
+                </li>
+                <li class="flex items-center">
+                  <div class="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  Gestión completa de calendario
+                </li>
+              </ul>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-amber-600 mb-2">+45%</div>
+              <p class="text-gray-600">Retención con seguimiento de progreso</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="role-content-profesor">
+        <div class="bg-gray-100 rounded-xl p-6 border border-gray-100">
+          <h4 class="text-xl font-bold mb-4 text-gray-900">Herramientas de Seguimiento</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <ul class="space-y-3">
+                <li class="flex items-center">
+                  <div class="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  Progreso detallado de cada alumno
+                </li>
+                <li class="flex items-center">
+                  <div class="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  Rutinas que se adaptan automáticamente
+                </li>
+                <li class="flex items-center">
+                  <div class="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  Administración de clases y cupos
+                </li>
+              </ul>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-amber-600 mb-2">67%</div>
+              <p class="text-gray-600">Mejor adherencia a rutinas</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="role-content-cliente">
+        <div class="bg-gray-100 rounded-xl p-6 border border-gray-100">
+          <h4 class="text-xl font-bold mb-4 text-gray-900">Tu Progreso, Tu Éxito</h4>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <ul class="space-y-3">
+                <li class="flex items-center">
+                  <div class="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  Registro fácil de peso y medidas
+                </li>
+                <li class="flex items-center">
+                  <div class="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  Gráficos de evolución motivadores
+                </li>
+                <li class="flex items-center">
+                  <div class="w-2 h-2 bg-amber-400 rounded-full mr-3"></div>
+                  Notificaciones de bienestar personalizadas
+                </li>
+              </ul>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-amber-600 mb-2">89%</div>
+              <p class="text-gray-600">Miembros logran sus objetivos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .role-tab {
+    color: #6b7280;
+  }
+  
+  .role-tab.active {
+    background: #fbbf24;
+    color: #000000;
+  }
+  
+  .role-tab:hover:not(.active) {
+    background: #f3f4f6;
+    color: #374151;
+  }
+  
+  .role-content-all,
+  .role-content-admin,
+  .role-content-profesor,
+  .role-content-cliente {
+    display: none;
+  }
+  
+  .role-content-all.active,
+  .role-content-admin.active,
+  .role-content-profesor.active,
+  .role-content-cliente.active {
+    display: block;
+  }
+  
+  /* Professional styling */
+  .container {
+    max-width: 1200px;
+  }
+  
+  /* Smooth transitions */
+  * {
+    transition: all 0.3s ease;
+  }
+  
+  /* Hover effects */
+  .group:hover {
+    transform: translateY(-4px);
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const roleTabs = document.querySelectorAll('.role-tab') as NodeListOf<HTMLButtonElement>;
+    
+    roleTabs.forEach(tab => {
+      tab.addEventListener('click', function(this: HTMLButtonElement) {
+        // Remove active from all tabs and contents
+        roleTabs.forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('[class^="role-content-"]').forEach((content: Element) => {
+          content.classList.remove('active');
+        });
+        
+        // Add active to clicked tab
+        this.classList.add('active');
+        
+        // Show corresponding content
+        const role = this.dataset.role;
+        if (role) {
+          const targetContent = document.querySelector(`.role-content-${role}`) as HTMLElement | null;
+          if (targetContent) {
+            targetContent.classList.add('active');
+          }
+        }
+      });
+    });
+  });
+</script>

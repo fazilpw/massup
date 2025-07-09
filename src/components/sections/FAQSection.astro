@@ -1,0 +1,420 @@
+---
+// FAQSection.astro - Preguntas frecuentes sobre mass-up
+
+const faqs = [
+  {
+    id: 'roi-real',
+    category: 'ROI y Costos',
+    question: '¿Realmente se paga solo la inversión?',
+    answer: 'Sí. Un gimnasio promedio de 180 miembros ahorra 15-20 horas semanales en tareas administrativas (equivale a $225,000+ mensuales). Además, la reducción de morosidad del 15% al 3% genera ingresos adicionales significativos. El 89% de nuestros clientes recupera la inversión en menos de 8 semanas.',
+    popular: true
+  },
+  {
+    id: 'tech-adoption',
+    category: 'Implementación',
+    question: '¿Qué pasa si mis miembros no saben usar apps?',
+    answer: 'La app está diseñada para ser súper simple. Si usan Nequi o WhatsApp, van a poder usar mass-up sin problemas. Incluimos capacitación para tu equipo y material de apoyo para los miembros. En caso necesario, pueden seguir pagando de forma tradicional mientras se adaptan gradualmente.',
+    popular: true
+  },
+  {
+    id: 'contract-flexibility',
+    category: 'Contrato',
+    question: '¿Puedo cancelar cuando quiera?',
+    answer: 'Absolutamente. Somos mes a mes, sin contratos largos ni penalidades. Si cancelas, te ayudamos a exportar todos tus datos y migrar a otro sistema sin costo adicional. Estamos seguros de que vas a querer quedarte por los resultados, pero no te amarramos.',
+    popular: true
+  },
+  {
+    id: 'notifications-care',
+    category: 'Funcionalidad',
+    question: '¿Las notificaciones de bienestar son invasivas?',
+    answer: 'No. La app envía máximo 3-4 notificaciones diarias personalizadas según tu rutina. Puedes configurar horarios, activar modo silencio y elegir qué tipos de notificaciones recibir. El objetivo es cuidarte, no molestarte.',
+    popular: false
+  },
+  {
+    id: 'payment-integration',
+    category: 'Pagos',
+    question: '¿Funciona con mi sistema actual de pagos?',
+    answer: 'Sí, mass-up se integra con Nequi Business, Daviplata Comercios, PSE, tarjetas de crédito/débito y transferencias bancarias. También podemos integrar con tu sistema actual mientras haces la transición gradualmente. La migración es progresiva, sin interrupciones.',
+    popular: false
+  },
+  {
+    id: 'implementation-time',
+    category: 'Implementación',
+    question: '¿Cuánto tiempo toma la implementación completa?',
+    answer: 'El setup técnico toma 24-48 horas. La migración de tus miembros actuales se hace gradualmente en 1-2 semanas. Durante este tiempo tu gimnasio opera normalmente. Incluimos capacitación para tu equipo y acompañamiento durante todo el proceso.',
+    popular: false
+  },
+  {
+    id: 'data-security',
+    category: 'Seguridad',
+    question: '¿Qué tan segura es la información de mis miembros?',
+    answer: 'Muy segura. Usamos encriptación de grado bancario, servidores en la nube con certificaciones internacionales y cumplimos con todas las normativas de protección de datos. Además, realizamos backups automáticos diarios para que nunca pierdas información.',
+    popular: false
+  },
+  {
+    id: 'customization',
+    category: 'Personalización',
+    question: '¿Puedo personalizar la app con mi marca?',
+    answer: 'Sí, la app es 100% personalizable con tu logo, colores de marca, nombre del gimnasio y fotografías. Tus miembros verán una app que se siente completamente tuya, no genérica. También podemos personalizar funcionalidades específicas según tus necesidades.',
+    popular: false
+  },
+  {
+    id: 'support-quality',
+    category: 'Soporte',
+    question: '¿Qué tipo de soporte técnico ofrecen?',
+    answer: 'Soporte en español por WhatsApp con respuesta promedio en menos de 2 horas en horario laboral. Para clientes Premium, ofrecemos soporte prioritario. También incluimos videollamadas de capacitación y un portal de ayuda con guías paso a paso.',
+    popular: false
+  },
+  {
+    id: 'multiple-locations',
+    category: 'Escalabilidad',
+    question: '¿Funciona para múltiples sucursales?',
+    answer: 'Sí, mass-up está diseñado para manejar múltiples ubicaciones desde un solo panel administrativo. Puedes ver reportes consolidados o por sucursal, gestionar miembros que visitan diferentes sedes y mantener precios diferenciados por ubicación.',
+    popular: false
+  },
+  {
+    id: 'offline-functionality',
+    category: 'Funcionalidad',
+    question: '¿Qué pasa si se va el internet?',
+    answer: 'La app funciona offline para las funciones básicas como mostrar rutinas y QR de acceso. Los datos se sincronizan automáticamente cuando regresa la conexión. Los pagos requieren internet, pero el sistema guarda las transacciones pendientes para procesarlas después.',
+    popular: false
+  },
+  {
+    id: 'training-requirements',
+    category: 'Capacitación',
+    question: '¿Necesito capacitar a todo mi personal?',
+    answer: 'La capacitación principal toma solo 2 horas para administradores y 1 hora para profesores. La interfaz es muy intuitiva, similar a usar WhatsApp. Incluimos manuales simplificados, videos tutoriales y soporte continuo para dudas.',
+    popular: false
+  },
+  {
+    id: 'competition-advantage',
+    category: 'Competencia',
+    question: '¿Cómo se compara mass-up con otras soluciones?',
+    answer: 'A diferencia de software genérico como Perfect Gym o sistemas costosos, mass-up está diseñado específicamente para gimnasios pequeños en Colombia. Integramos Nequi/Daviplata nativamente, nuestros precios son accesibles y el soporte es en español. No pagas por funciones que no usas.',
+    popular: false
+  }
+];
+
+const categories = [
+  { id: 'all', name: 'Todas las Preguntas', count: faqs.length },
+  { id: 'ROI y Costos', name: 'ROI y Costos', count: faqs.filter(f => f.category === 'ROI y Costos').length },
+  { id: 'Implementación', name: 'Implementación', count: faqs.filter(f => f.category === 'Implementación').length },
+  { id: 'Funcionalidad', name: 'Funcionalidad', count: faqs.filter(f => f.category === 'Funcionalidad').length },
+  { id: 'Pagos', name: 'Pagos', count: faqs.filter(f => f.category === 'Pagos').length },
+  { id: 'Contrato', name: 'Contrato', count: faqs.filter(f => f.category === 'Contrato').length }
+];
+---
+
+<section id="faq" class="py-20 bg-gray-50">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <div class="inline-block bg-amber-400 text-black px-4 py-2 rounded-full font-bold text-sm mb-6">
+        PREGUNTAS FRECUENTES
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+        Resolvemos tus 
+        <span class="text-amber-400 block mt-2">
+          Dudas
+        </span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Respuestas honestas a las dudas más comunes de dueños de gimnasios que están considerando mass-up
+      </p>
+    </div>
+
+    <!-- Popular FAQs Preview -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Las 3 Preguntas Más Frecuentes</h3>
+      <div class="grid lg:grid-cols-3 gap-6">
+        {faqs.filter(faq => faq.popular).map(faq => (
+          <div class="bg-stone-50 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow border border-amber-200">
+            <div class="mb-4">
+              <span class="bg-amber-100 text-amber-800 text-xs font-medium px-3 py-1 rounded-full">
+                {faq.category}
+              </span>
+            </div>
+            <h4 class="text-lg font-bold text-gray-900 mb-3">{faq.question}</h4>
+            <p class="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex justify-center mb-8">
+      <div class="bg-stone-50 rounded-xl p-2 shadow-sm border border-gray-100">
+        {categories.map((category, index) => (
+          <button 
+            class={`category-filter px-4 py-2 rounded-lg font-medium transition-all text-sm ${index === 0 ? 'active' : ''}`}
+            data-category={category.id}
+          >
+            {category.name} ({category.count})
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="max-w-4xl mx-auto">
+      <div class="space-y-4" id="faq-container">
+        {faqs.map((faq, index) => (
+          <div 
+            class={`faq-item bg-stone-50 rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow ${faq.popular ? 'popular' : ''}`}
+            data-category={faq.category}
+          >
+            <button 
+              class="faq-toggle w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-inset"
+              data-faq={faq.id}
+            >
+              <div class="flex-1 pr-4">
+                <div class="flex items-center mb-2">
+                  {faq.popular && (
+                    <span class="bg-amber-100 text-amber-800 text-xs font-medium px-2 py-1 rounded-full mr-3">
+                      Popular
+                    </span>
+                  )}
+                  <span class="bg-gray-100 text-gray-600 text-xs font-medium px-2 py-1 rounded-full">
+                    {faq.category}
+                  </span>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900">{faq.question}</h3>
+              </div>
+              <div class="flex-shrink-0">
+                <svg class="w-6 h-6 text-gray-500 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </button>
+            
+            <div class="faq-content px-6 pb-5 hidden">
+              <div class="pt-2 border-t border-gray-100">
+                <p class="text-gray-700 leading-relaxed">{faq.answer}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Still Have Questions CTA -->
+    <div class="mt-16 text-center">
+      <div class="bg-stone-50 rounded-2xl p-8 shadow-lg border border-gray-100 max-w-2xl mx-auto">
+        <div class="w-16 h-16 bg-amber-400 rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+          </svg>
+        </div>
+        
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">¿Tienes Otras Dudas?</h3>
+        <p class="text-gray-600 mb-6">
+          Habla directamente con nosotros. Entendemos que cada gimnasio es único y 
+          queremos resolver todas tus preguntas específicas.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="https://wa.me/+573181123660?text=Hola%20mass-up,%20tengo%20algunas%20preguntas%20específicas%20sobre%20la%20app%20para%20mi%20gimnasio"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold transition-colors"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            Preguntar por WhatsApp
+          </a>
+          
+          <a 
+            href="#lista-espera"
+            class="inline-flex items-center justify-center px-6 py-3 border-2 border-amber-400 text-amber-600 hover:bg-amber-50 rounded-lg font-bold transition-colors"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+            Unirme a Lista de Espera
+          </a>
+        </div>
+        
+        <p class="text-sm text-gray-500 mt-4">
+          📞 Respuesta promedio: 2 horas • 🎯 Consulta gratuita • ✅ Sin compromiso
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Schema.org para FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Realmente se paga solo la inversión?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Un gimnasio promedio de 180 miembros ahorra 15-20 horas semanales en tareas administrativas (equivale a $225,000+ mensuales). Además, la reducción de morosidad del 15% al 3% genera ingresos adicionales significativos. El 89% de nuestros clientes recupera la inversión en menos de 8 semanas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa si mis miembros no saben usar apps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La app está diseñada para ser súper simple. Si usan Nequi o WhatsApp, van a poder usar mass-up sin problemas. Incluimos capacitación para tu equipo y material de apoyo para los miembros. En caso necesario, pueden seguir pagando de forma tradicional mientras se adaptan gradualmente."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo cancelar cuando quiera?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutamente. Somos mes a mes, sin contratos largos ni penalidades. Si cancelas, te ayudamos a exportar todos tus datos y migrar a otro sistema sin costo adicional. Estamos seguros de que vas a querer quedarte por los resultados, pero no te amarramos."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  .category-filter {
+    color: #6b7280;
+    transition: all 0.3s ease;
+  }
+  
+  .category-filter.active {
+    background: #fbbf24;
+    color: #000000;
+  }
+  
+  .category-filter:hover:not(.active) {
+    background: #f3f4f6;
+    color: #374151;
+  }
+  
+  .faq-item {
+    transition: all 0.3s ease;
+  }
+  
+  .faq-item.popular {
+    border-color: #fbbf24;
+    box-shadow: 0 4px 6px -1px rgba(251, 191, 36, 0.1);
+  }
+  
+  .faq-content {
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+  }
+  
+  .faq-content.show {
+    max-height: 500px;
+    display: block;
+  }
+  
+  .faq-toggle svg {
+    transition: transform 0.3s ease;
+  }
+  
+  .faq-toggle.active svg {
+    transform: rotate(180deg);
+  }
+  
+  /* Hide FAQ items when filtering */
+  .faq-item.hidden {
+    display: none;
+  }
+  
+  /* Animation for showing FAQ items */
+  .faq-item {
+    animation: fadeInUp 0.3s ease-out;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const categoryFilters = document.querySelectorAll('.category-filter') as NodeListOf<HTMLButtonElement>;
+    const faqItems = document.querySelectorAll('.faq-item') as NodeListOf<HTMLElement>;
+    const faqToggles = document.querySelectorAll('.faq-toggle') as NodeListOf<HTMLButtonElement>;
+    
+    // Category filtering
+    categoryFilters.forEach(filter => {
+      filter.addEventListener('click', function(this: HTMLButtonElement) {
+        const category = this.dataset.category;
+        
+        // Update active filter
+        categoryFilters.forEach(f => f.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Filter FAQ items
+        faqItems.forEach((item: HTMLElement) => {
+          const itemCategory = item.dataset.category;
+          
+          if (category === 'all' || category === itemCategory) {
+            item.classList.remove('hidden');
+            // Add staggered animation
+            setTimeout(() => {
+              item.style.animation = 'fadeInUp 0.3s ease-out';
+            }, Math.random() * 200);
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+    
+    // FAQ accordion functionality
+    faqToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(this: HTMLButtonElement) {
+        const faqItem = this.closest('.faq-item') as HTMLElement | null;
+        const content = faqItem?.querySelector('.faq-content') as HTMLElement | null;
+        const isOpen = content?.classList.contains('show');
+        
+        // Close all other FAQ items
+        faqToggles.forEach((otherToggle: HTMLButtonElement) => {
+          if (otherToggle !== toggle) {
+            const otherItem = otherToggle.closest('.faq-item') as HTMLElement | null;
+            const otherContent = otherItem?.querySelector('.faq-content') as HTMLElement | null;
+            if (otherContent) {
+              otherContent.classList.remove('show');
+              otherContent.classList.add('hidden');
+            }
+            otherToggle.classList.remove('active');
+          }
+        });
+        
+        // Toggle current FAQ item
+        if (content) {
+          if (isOpen) {
+            content.classList.remove('show');
+            content.classList.add('hidden');
+            toggle.classList.remove('active');
+          } else {
+            content.classList.add('show');
+            content.classList.remove('hidden');
+            toggle.classList.add('active');
+          }
+        }
+      });
+    });
+    
+    // Auto-open first popular FAQ on load
+    const firstPopularFaq = document.querySelector('.faq-item.popular .faq-toggle') as HTMLButtonElement | null;
+    if (firstPopularFaq) {
+      firstPopularFaq.click();
+    }
+  });
+</script>

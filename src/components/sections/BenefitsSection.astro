@@ -1,0 +1,318 @@
+---
+// BenefitsSection.astro - Estilo Spinning Center Gym con amber-400
+
+const mainBenefits = [
+  {
+    id: 'retention-boost',
+    title: 'Aumenta +45% la Retención de Miembros',
+    description: 'El seguimiento de progreso real motiva a los miembros a seguir entrenando y lograr sus objetivos.',
+    metric: '+45% retención vs. gimnasios sin seguimiento',
+    icon: 'trending-up',
+    details: [
+      'Miembros ven progreso real en gráficos',
+      'Motivación constante por logros alcanzados',
+      'Rutinas que evolucionan con el progreso',
+      'Comunicación directa profesor-alumno'
+    ]
+  },
+  {
+    id: 'success-rate',
+    title: '89% de los Miembros Logran sus Objetivos',
+    description: 'Seguimiento preciso + rutinas inteligentes + nutrición IA = resultados reales garantizados.',
+    metric: '89% vs 34% en gimnasios tradicionales',
+    icon: 'target',
+    details: [
+      'IA ajusta rutinas según progreso real',
+      'Nutrición personalizada por objetivos',
+      'Profesores optimizan basado en datos',
+      'Seguimiento constante sin fricción'
+    ]
+  },
+  {
+    id: 'personal-care',
+    title: 'Cuidado Personal 24/7 en tu Aplicación',
+    description: 'App móvil profesional que te acompaña con notificaciones inteligentes de bienestar y progreso personal.',
+    metric: '24/7 cuidado personalizado',
+    icon: 'mobile-app',
+    details: [
+      'Notificaciones de logros y celebración personal',
+      'Tips nutricionales según tu entrenamiento',
+      'Recordatorios de hidratación inteligentes',
+      'Motivación personalizada en momentos correctos'
+    ]
+  },
+  {
+    id: 'class-efficiency',
+    title: 'Sistema de Reservas Inteligente',
+    description: 'Reserva clases grupales, spinning y entrenamientos desde tu celular con cupos en tiempo real.',
+    metric: '+78% ocupación promedio de clases',
+    icon: 'calendar-booking',
+    details: [
+      'Reservas en tiempo real con cupos limitados',
+      'Lista de espera automática',
+      'Notificaciones de disponibilidad',
+      'Calendario integrado con tu rutina'
+    ]
+  }
+];
+
+const secondaryBenefits = [
+  {
+    title: 'Control de Progreso',
+    description: 'IMC, porcentaje de grasa y masa muscular',
+    icon: 'analytics'
+  },
+  {
+    title: 'Múltiples Sedes',
+    description: 'Acceso a todas las ubicaciones',
+    icon: 'location'
+  },
+  {
+    title: 'Entrenadores Certificados',
+    description: 'Profesionales especializados disponibles',
+    icon: 'user-check'
+  },
+  {
+    title: 'Tecnología Avanzada',
+    description: 'Equipos de última generación',
+    icon: 'settings'
+  }
+];
+---
+
+<section class="py-20 bg-black">
+  <div class="container mx-auto px-6">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <div class="inline-block bg-amber-400 text-black px-4 py-2 rounded-full font-bold text-sm mb-6">
+        RESULTADOS COMPROBADOS
+      </div>
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+        Descubre los Beneficios de Entrenar en
+        <span class="text-amber-400 block mt-2">
+          mass-up
+        </span>
+      </h2>
+      <p class="text-xl text-white max-w-3xl mx-auto leading-relaxed">
+        Datos reales de gimnasios que implementaron seguimiento de progreso profesional. 
+        Tu gimnasio puede lograr estos mismos resultados.
+      </p>
+    </div>
+
+    <!-- Main Benefits Grid - Estilo Spinning Center -->
+    <div class="grid lg:grid-cols-2 gap-8 mb-16">
+      {mainBenefits.map((benefit) => (
+        <div class="group bg-gray-100 border border-gray-100 rounded-2xl p-8 hover:shadow-lg hover:border-amber-400 transition-all duration-300">
+          <!-- Icon and Header -->
+          <div class="flex items-start mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-500 rounded-xl flex items-center justify-center mr-6 group-hover:scale-110 transition-transform">
+              {benefit.icon === 'trending-up' && (
+                <svg class="w-8 h-8 text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                </svg>
+              )}
+              {benefit.icon === 'target' && (
+                <svg class="w-8 h-8 text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              )}
+              {benefit.icon === 'mobile-app' && (
+                <svg class="w-8 h-8 text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+              )}
+              {benefit.icon === 'calendar-booking' && (
+                <svg class="w-8 h-8 text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+                </svg>
+              )}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-2xl font-bold text-black mb-3 leading-tight">{benefit.title}</h3>
+              <p class="text-black mb-4 leading-relaxed">{benefit.description}</p>
+            </div>
+          </div>
+
+          <!-- Metric destacado - Estilo Spinning Center -->
+          <div class="bg-gradient-to-r from-amber-50 to-amber-100 rounded-xl p-6 mb-6 border border-amber-200">
+            <div class="text-3xl font-bold text-amber-600 mb-2">{benefit.metric}</div>
+            <div class="text-sm text-amber-700 font-medium">Resultado promedio comprobado</div>
+          </div>
+
+          <!-- Details -->
+          <div class="space-y-3">
+            {benefit.details.map((detail) => (
+              <div class="flex items-start">
+                <div class="w-2 h-2 bg-amber-400 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                <span class="text-black text-sm leading-relaxed">{detail}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Comparativa - Estilo profesional -->
+    <div class="bg-black rounded-2xl p-8 mb-16">
+      <div class="text-center mb-8">
+        <h3 class="text-3xl font-bold text-white mb-4">Comparativa de Resultados</h3>
+        <p class="text-lg text-white">Gimnasios CON vs SIN sistema de seguimiento profesional</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Sin sistema -->
+        <div class="bg-white rounded-xl p-6 border border-black">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-black">Gimnasios Tradicionales</h4>
+          </div>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center py-3 border-b border-gray-100">
+              <span class="text-gray-700 font-medium">Retención anual:</span>
+              <span class="font-bold text-gray-700 text-lg">54%</span>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-gray-100">
+              <span class="text-gray-700 font-medium">Logran objetivos:</span>
+              <span class="font-bold text-gray-700 text-lg">34%</span>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-gray-100">
+              <span class="text-gray-700 font-medium">Ocupación clases:</span>
+              <span class="font-bold text-gray-700 text-lg">43%</span>
+            </div>
+            <div class="flex justify-between items-center py-3">
+              <span class="text-gray-700 font-medium">Tiempo admin:</span>
+              <span class="font-bold text-gray-700 text-lg">20h/semana</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Con mass-up -->
+        <div class="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-6 border-2 border-amber-400">
+          <div class="flex items-center mb-6">
+            <div class="w-12 h-12 bg-amber-400 rounded-full flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h4 class="text-xl font-bold text-amber-800">Con mass-up</h4>
+          </div>
+          <div class="space-y-4">
+            <div class="flex justify-between items-center py-3 border-b border-amber-200">
+              <span class="text-amber-800 font-medium">Retención anual:</span>
+              <span class="font-bold text-amber-600 text-lg">78% (+44%)</span>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-amber-200">
+              <span class="text-amber-800 font-medium">Logran objetivos:</span>
+              <span class="font-bold text-amber-600 text-lg">89% (+161%)</span>
+            </div>
+            <div class="flex justify-between items-center py-3 border-b border-amber-200">
+              <span class="text-amber-800 font-medium">Ocupación clases:</span>
+              <span class="font-bold text-amber-600 text-lg">76% (+77%)</span>
+            </div>
+            <div class="flex justify-between items-center py-3">
+              <span class="text-amber-800 font-medium">Tiempo admin:</span>
+              <span class="font-bold text-amber-600 text-lg">4h/semana (-80%)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary Benefits - Grid estilo Spinning Center -->
+    <div class="grid md:grid-cols-4 gap-6 mb-16">
+      {secondaryBenefits.map((benefit) => (
+        <div class="bg-gray-100 border border-amber-200 rounded-xl p-6 text-center hover:border-amber-400 hover:shadow-md transition-all duration-300">
+          <div class="w-14 h-14 bg-amber-400 rounded-full flex items-center justify-center mx-auto mb-4">
+            {benefit.icon === 'analytics' && (
+              <svg class="w-7 h-7 text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v4"></path>
+              </svg>
+            )}
+            {benefit.icon === 'location' && (
+              <svg class="w-7 h-7 text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            )}
+            {benefit.icon === 'user-check' && (
+              <svg class="w-7 h-7 text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            )}
+            {benefit.icon === 'settings' && (
+              <svg class="w-7 h-7 text-gray-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+            )}
+          </div>
+          <h4 class="font-bold text-black mb-2 text-lg">{benefit.title}</h4>
+          <p class="text-black text-sm leading-relaxed">{benefit.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Call to Action - Estilo Spinning Center -->
+    <div class="bg-gradient-to-r from-amber-400 to-amber-500 rounded-2xl p-8 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h3 class="text-3xl font-bold text-gray-800 mb-4">
+          ¿Listo para Transformar tu Gimnasio?
+        </h3>
+        <p class="text-amber-100 text-lg mb-8 leading-relaxed">
+          Únete a los gimnasios más exitosos de Colombia que ya están usando tecnología profesional 
+          para aumentar su retención y satisfacción de clientes.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="#lista-espera" 
+            class="inline-flex items-center justify-center px-8 py-4 bg-white text-amber-600 hover:bg-gray-100 rounded-xl font-bold text-lg transition-all shadow-lg hover:shadow-xl"
+          >
+            Conocer mass-up
+          </a>
+          <a 
+            href="https://wa.me/+573181123660?text=Hola%20mass-up,%20quiero%20información%20sobre%20cómo%20mejorar%20la%20retención%20en%20mi%20gimnasio"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-gray-800 text-gray-800 hover:bg-white hover:text-amber-600 rounded-xl font-bold text-lg transition-all"
+          >
+            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+            </svg>
+            Contactar Asesor
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Estilo profesional inspirado en Spinning Center Gym */
+  .container {
+    max-width: 1200px;
+  }
+  
+  /* Hover effects suaves y profesionales */
+  .group:hover {
+    transform: translateY(-4px);
+  }
+  
+  /* Transiciones suaves */
+  * {
+    transition: all 0.3s ease;
+  }
+  
+  /* Typography mejorada */
+  h2, h3, h4 {
+    letter-spacing: -0.025em;
+  }
+  
+  /* Cards con estilo premium */
+  .border-amber-400 {
+    box-shadow: 0 0 0 1px #fbbf24, 0 4px 6px -1px rgba(251, 191, 36, 0.1);
+  }
+</style>
