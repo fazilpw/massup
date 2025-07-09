@@ -1,5 +1,5 @@
 ---
-// Header.astro - Navegación principal para mass-up (Negro)
+// Header.astro - Con logo SVG desde public/
 
 const navItems = [
   { name: 'Funciones', href: '#funciones', description: 'QR, rutinas, pagos automáticos' },
@@ -13,16 +13,18 @@ const navItems = [
 <header class="header-main fixed w-full top-0 z-50 bg-black/95 backdrop-blur-lg border-b border-gray-800 shadow-sm transition-all duration-300 ease-in-out">
   <div class="container mx-auto px-6">
     <div class="flex justify-between items-center py-4">
-      <!-- Logo -->
+      <!-- Logo SVG -->
       <div class="flex items-center">
-        <a href="/" class="flex items-center hover:opacity-80 transition-opacity">
-          <div class="w-10 h-10 bg-gradient-to-br from-amber-400 to-amber-500 rounded-xl flex items-center justify-center mr-3">
-            <span class="text-black font-bold text-xl">M</span>
-          </div>
-          <div class="flex flex-col">
-            <span class="text-2xl font-bold text-amber-400">mass-up</span>
-            <span class="text-xs text-gray-400 -mt-1">App para gimnasios</span>
-          </div>
+        <a href="/" class="flex items-center hover:opacity-80 transition-all group">
+          <!-- OPCIÓN 1: Logo SVG desde public/ -->
+          <img 
+            src="/images/logo-massup.svg" 
+            alt="mass-up logo"
+            class="h-14 w-auto mr-3 group-hover:scale-105 transition-transform"
+          />
+          
+          <!-- Texto opcional junto al logo -->
+          
         </a>
       </div>
 
@@ -82,17 +84,18 @@ const navItems = [
     </div>
   </div>
 
-  <!-- Mobile Menu Overlay -->
+  <!-- Mobile Menu (resto del código igual...) -->
   <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-black/50 opacity-0 invisible transition-all duration-300 z-40">
     <div class="mobile-menu-panel absolute right-0 top-0 h-full w-80 bg-gray-900 shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out">
       <div class="p-6">
-        <!-- Mobile Header -->
+        <!-- Mobile Header con logo -->
         <div class="flex justify-between items-center mb-8">
           <div class="flex items-center">
-            <div class="w-8 h-8 bg-gradient-to-br from-amber-400 to-amber-500 rounded-lg flex items-center justify-center mr-2">
-              <span class="text-black font-bold text-lg">M</span>
-            </div>
-            <span class="text-xl font-bold text-amber-400">mass-up</span>
+            <img 
+              src="/images/logo-massup.svg" 
+              alt="mass-up logo"
+              class="h-8 w-auto mr-2"
+            />
           </div>
           <button 
             id="mobile-menu-close"
@@ -135,36 +138,27 @@ const navItems = [
             Hablar por WhatsApp
           </a>
         </div>
-
-        <!-- Mobile Contact Info -->
-        <div class="mt-8 pt-6 border-t border-gray-700">
-          <div class="text-center">
-            <p class="text-sm text-gray-400 mb-2">¿Tienes preguntas?</p>
-            <a 
-              href="https://wa.me/+573181123660"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center text-green-400 hover:text-green-300 font-medium"
-            >
-              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
-              </svg>
-              +57 318 112 3660
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 </header>
 
 <style>
-  /* Smooth scrolling for navigation */
+  /* Logo styles */
+  .header-main img {
+    filter: brightness(1) contrast(1);
+    transition: all 0.3s ease;
+  }
+  
+  .header-main img:hover {
+    filter: brightness(1.1) contrast(1.1);
+  }
+  
+  /* Resto de estilos igual... */
   html {
     scroll-behavior: smooth;
   }
   
-  /* Header animations - más suaves */
   .header-main {
     transform: translateY(0);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -178,7 +172,6 @@ const navItems = [
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
   }
   
-  /* Mobile menu animations - más suaves */
   #mobile-menu.active {
     opacity: 1;
     visibility: visible;
@@ -188,24 +181,20 @@ const navItems = [
     transform: translateX(0);
   }
   
-  /* Navigation dropdown animations */
   .nav-dropdown {
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
   
-  /* Active navigation state */
   .nav-item a.active {
     color: #fbbf24;
   }
   
-  /* Header backdrop blur support */
   @supports (backdrop-filter: blur(12px)) {
     .header-main {
       backdrop-filter: blur(12px);
     }
   }
   
-  /* Mobile responsive improvements */
   @media (max-width: 768px) {
     .mobile-menu-panel {
       width: min(320px, 90vw);
@@ -214,20 +203,18 @@ const navItems = [
 </style>
 
 <script>
+  // JavaScript igual al anterior...
   document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu functionality
     const mobileMenuButton = document.getElementById('mobile-menu-button') as HTMLButtonElement | null;
     const mobileMenu = document.getElementById('mobile-menu') as HTMLElement | null;
     const mobileMenuClose = document.getElementById('mobile-menu-close') as HTMLButtonElement | null;
     const mobileNavLinks = document.querySelectorAll('.mobile-nav-link') as NodeListOf<HTMLAnchorElement>;
     
-    // Open mobile menu
     mobileMenuButton?.addEventListener('click', () => {
       mobileMenu?.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
     
-    // Close mobile menu
     const closeMobileMenu = () => {
       mobileMenu?.classList.remove('active');
       document.body.style.overflow = '';
@@ -235,19 +222,16 @@ const navItems = [
     
     mobileMenuClose?.addEventListener('click', closeMobileMenu);
     
-    // Close menu when clicking overlay
     mobileMenu?.addEventListener('click', (e: Event) => {
       if (e.target === mobileMenu) {
         closeMobileMenu();
       }
     });
     
-    // Close menu when clicking nav links
     mobileNavLinks.forEach(link => {
       link.addEventListener('click', closeMobileMenu);
     });
     
-    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
         e.preventDefault();
@@ -255,7 +239,7 @@ const navItems = [
         if (href) {
           const target = document.querySelector(href) as HTMLElement | null;
           if (target) {
-            const headerHeight = 80; // Approximate header height
+            const headerHeight = 80;
             const targetPosition = target.offsetTop - headerHeight;
             
             window.scrollTo({
@@ -267,7 +251,6 @@ const navItems = [
       });
     });
     
-    // Active navigation state based on scroll position
     const updateActiveNavigation = () => {
       const sections = document.querySelectorAll('section[id]') as NodeListOf<HTMLElement>;
       const navLinks = document.querySelectorAll('nav a[href^="#"]') as NodeListOf<HTMLAnchorElement>;
@@ -293,7 +276,6 @@ const navItems = [
       });
     };
     
-    // Header scroll effect - más suave
     let lastScrollY = window.scrollY;
     let ticking = false;
     const header = document.querySelector('.header-main') as HTMLElement | null;
@@ -301,14 +283,12 @@ const navItems = [
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Hide/show header based on scroll direction - más suave
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         header?.classList.add('header-hidden');
       } else {
         header?.classList.remove('header-hidden');
       }
       
-      // Add shadow on scroll
       if (currentScrollY > 10) {
         header?.classList.add('header-shadow');
       } else {
@@ -319,7 +299,6 @@ const navItems = [
       updateActiveNavigation();
     };
     
-    // Throttled scroll listener con mejor performance
     window.addEventListener('scroll', () => {
       if (!ticking) {
         requestAnimationFrame(() => {
@@ -330,14 +309,12 @@ const navItems = [
       }
     }, { passive: true });
     
-    // Close mobile menu on window resize
     window.addEventListener('resize', () => {
       if (window.innerWidth >= 1024) {
         closeMobileMenu();
       }
     });
     
-    // Escape key to close mobile menu
     document.addEventListener('keydown', (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeMobileMenu();
